@@ -34,7 +34,7 @@ public class MyActivity extends Activity implements LoaderManager.LoaderCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add:
-                queryHandler.insert( User.make( "Akshay Dashrath", "15/03/1985" ) );
+                queryHandler.insert( User.create( "Akshay Dashrath", "15/03/1985" ) );
                 break;
             case R.id.menu_clear:
                 queryHandler.clear();
