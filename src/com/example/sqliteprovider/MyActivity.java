@@ -58,13 +58,17 @@ public class MyActivity extends Activity implements LoaderManager.LoaderCallback
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (getListView().getAdapter() == null) {
-            getListView().setAdapter( new SimpleCursorAdapter( getApplicationContext(), R.layout.list_item_user, data,
-                                                               new String[]{User.Columns.NAME, User.Columns.DOB},
-                                                               new int[]{android.R.id.text1, android.R.id.text2},
-                                                               -1 ) );
+            getListView().setAdapter( getNewAdapter( data ) );
         } else {
             ((SimpleCursorAdapter) getListView().getAdapter()).swapCursor( data );
         }
+    }
+
+    private SimpleCursorAdapter getNewAdapter(Cursor data) {
+        return new SimpleCursorAdapter( getApplicationContext(), R.layout.list_item_user, data,
+                                                           new String[]{User.Columns.NAME, User.Columns.DOB},
+                                                           new int[]{android.R.id.text1, android.R.id.text2},
+                                                           -1 );
     }
 
     @Override
